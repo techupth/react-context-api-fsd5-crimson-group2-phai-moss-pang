@@ -3,22 +3,28 @@ import "./App.css";
 
 import HomePage from "./pages/HomePage.jsx";
 import ViewProductPage from "./pages/ViewProductPage.jsx";
+import { UserContext } from "./context/UserContext.jsx";
 
 function App() {
+
+  
   const userData = {
     username: "John",
     avatar: "https://placedog.net/100/100",
     level: "platinum",
   };
 
+
   return (
     <div className="App">
+      <UserContext.Provider value={userData}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/view/:id" element={<ViewProductPage />} />
         </Routes>
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }
